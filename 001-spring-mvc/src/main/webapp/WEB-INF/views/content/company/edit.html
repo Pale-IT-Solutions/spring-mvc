@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/favicon-32x32.png" sizes="16x16" type="image/png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<title>Company Edit</title>
+</head>
+<body>
+
+	<header th:insert="common/navbar.html :: header"> </header>
+	<main>
+		<div class="container" style="padding-top: 80px">
+			<div class="row justify-content-center">
+				<div class="col-md-5">
+					<h4>Company Edit</h4>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-5">
+					<form th:method="post" th:action="@{/company/edit}" th:object="${form}">
+						<input type="hidden" th:field="*{id}">
+						
+						<div class="form-group">
+							<label for="txtCompanyName">Company Name</label> <input type="text" th:field="*{name}" class="form-control form-control-sm" id="txtCompanyName" th:classappend="${#fields.hasErrors('name')} ? border-danger"> <small class="form-text text-danger text-right"
+								th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
+						</div>
+						<div class="form-group">
+							<label for="txtAddress">Address</label>
+							<textarea th:field="*{address}" class="form-control form-control-sm" id="txtAddress" rows="3" th:classappend="${#fields.hasErrors('address')} ? border-danger"></textarea>
+							<small class="form-text text-danger text-right" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></small>
+						</div>
+						<div class="form-group">
+							<label for="cboCompanyType">Company Type</label> <select th:field="*{type}" class="form-control form-control-sm" id="cboCompanyType" th:classappend="${#fields.hasErrors('type')} ? border-danger">
+								<option th:value="''">Select One</option>
+								<option th:value="Local">Local</option>
+								<option th:value="Foreign">Foreign</option>
+							</select> <small class="form-text text-danger text-right" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></small>
+						</div>
+						<div class="form-group">
+							<label for="txtPhoneNumber">Phone Number</label> <input type="text" th:field="*{phone}" class="form-control form-control-sm" id="txtPhoneNumber" th:classappend="${#fields.hasErrors('phone')} ? border-danger"> <small class="form-text text-danger text-right"
+								th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></small>
+						</div>
+						<div class="form-group">
+							<label for="cboCompanySize">Company Size</label> <select th:field="*{size}" class="form-control form-control-sm" id="cboCompanySize" th:classappend="${#fields.hasErrors('size')} ? border-danger">
+								<option th:value="''">Select One</option>
+								<option th:value="25">25</option>
+								<option th:value="50">50</option>
+								<option th:value="100">100</option>
+								<option th:value="200">200</option>
+								<option th:value="400">400</option>
+								<option th:value="600">600</option>
+								<option th:value="800">800</option>
+								<option th:value="1000">1000</option>
+							</select> <small class="form-text text-danger text-right" th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></small>
+						</div>
+						<br>
+						<div class="form-group text-center">
+							<button type="submit" class="btn btn-sm btn-secondary col-md-3">Edit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/favicon-32x32.png" sizes="16x16" type="image/png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<title>Company Add</title>
+</head>
+<body>
+
+	<header th:insert="common/navbar.html :: header"> </header>
+	<main>
+		<div class="container" style="padding-top: 80px">
+			<div class="row justify-content-center">
+				<div class="col-md-5">
+					<h4>Company Add</h4>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-5">
+					<form th:object="${form}">
+						<div class="form-group">
+							<label for="txtCompanyName">Company Name</label> <input type="text" disabled="disabled" th:field="*{name}" class="form-control form-control-sm" id="txtCompanyName">
+						</div>
+						<div class="form-group">
+							<label for="txtAddress">Address</label>
+							<textarea disabled="disabled" th:field="*{address}" class="form-control form-control-sm" id="txtAddress" rows="3"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="cboCompanyType">Company Type</label> <select disabled="disabled" th:field="*{type}" class="form-control form-control-sm" id="cboCompanyType">
+								<option th:value="''">Select One</option>
+								<option th:value="Local">Local</option>
+								<option th:value="Foreign">Foreign</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="txtPhoneNumber">Phone Number</label> <input type="text" disabled="disabled" th:field="*{phone}" class="form-control form-control-sm" id="txtPhoneNumber">
+						</div>
+						<div class="form-group">
+							<label for="cboCompanySize">Company Size</label> <select disabled="disabled" th:field="*{size}" class="form-control form-control-sm" id="cboCompanySize">
+								<option th:value="''">Select One</option>
+								<option th:value="25">25</option>
+								<option th:value="50">50</option>
+								<option th:value="100">100</option>
+								<option th:value="200">200</option>
+								<option th:value="400">400</option>
+								<option th:value="600">600</option>
+								<option th:value="800">800</option>
+								<option th:value="1000">1000</option>
+							</select>
+						</div>
+						<br>
+						<div class="form-group text-center">
+							<a class="btn btn-sm btn-secondary col-md-3" th:href="@{/company/list}">Back</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
